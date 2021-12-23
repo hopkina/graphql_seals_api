@@ -1,14 +1,14 @@
 from ariadne import convert_kwargs_to_snake_case
 
-from .models import Sighting
+from .models import Site
 
 
-def resolve_sightings(obj, info):
+def resolve_sites(obj, info):
     try:
-        sightings = [sighting.to_dict() for sighting in Sighting.query.all()]
+        sites = [site.to_dict() for site in Site.query.all()]
         payload = {
             "success": True,
-            "sightings": sightings
+            "sites": sites
         }
     except Exception as error:
         payload = {
@@ -19,18 +19,18 @@ def resolve_sightings(obj, info):
 
 
 @convert_kwargs_to_snake_case
-def resolve_sighting(obj, info, sighting_id):
+def resolve_site(obj, info, site_id):
     try:
-        sighting = Sighting.query.get(sighting_id)
+        site = Site.query.get(site_id)
         payload = {
             "success": True,
-            "sighting": sighting.to_dict()
+            "site": site.to_dict()
         }
 
     except AttributeError:  # todo not found
         payload = {
             "success": False,
-            "errors": [f"Sighting item matching id {sighting_id} not found"]
+            "errors": [f"Site item matching id {site_id} not found"]
         }
 
     return payload

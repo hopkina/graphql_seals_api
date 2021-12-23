@@ -3,40 +3,40 @@ schema {
     mutation: Mutation
 }
 
-type Sighting {
+type Site {
     id: ID!
     xCoord: Int!
     yCoord: Int!
     description: String!
-    dateSeen: String!
+    dateUpdated: String!
 }
 
-type SightingResult {
+type SiteResult {
     success: Boolean!
     errors: [String]
-    sighting: Sighting
+    site: Site
 }
 
-type SightingsResult {
+type SitesResult {
     success: Boolean!
     errors: [String]
-    sightings: [Sighting]
+    sites: [Site]
 }
 
 type Query {
-    sightings: SightingsResult!
-    sighting(sightingId: ID!): SightingResult!
+    sites: SitesResult!
+    site(siteId: ID!): SiteResult!
 }
 
-type DeleteSightingResult {
+type DeleteSiteResult {
     success: Boolean!
     errors: [String]
 }
 
 type Mutation {
-    createSighting(xCoord: Int!, yCoord: Int!, description: String!, dateSeen: String!): SightingResult
-    deleteSighting(sightingId: ID!): DeleteSightingResult
-    updateLocation(sightingId: ID!, newXCoord: Int!, newYCoord: Int!): SightingResult
-    updateDate(sightingId: ID!, newDate: String!): SightingResult
+    createSite(xCoord: Int!, yCoord: Int!, description: String!, dateUpdated: String!): SiteResult
+    deleteSite(siteId: ID!): DeleteSiteResult
+    updateLocation(siteId: ID!, newXCoord: Int!, newYCoord: Int!): SiteResult
+    updateDate(siteId: ID!, newDate: String!): SiteResult
 }
 
