@@ -2,7 +2,7 @@
 __pycache__
 
 # venv
-sightings_api_env
+sites_api_env
 
 # vscode
 .vscode

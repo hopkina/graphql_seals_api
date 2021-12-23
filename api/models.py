@@ -18,6 +18,7 @@ class Site(db.Model):
             "x_coord": self.x_coord,
             "y_coord": self.y_coord,
             "management_area": self.management_area,
+            "seal_species": self.seal_species,
             "comments": self.comments,
             "date_from": str(self.date_from.strftime('%d-%m-%Y'))
         }
