@@ -1,0 +1,55 @@
+# create a new seal haulage site
+mutation newSite {
+  createSite(
+    siteName:"Aird Ghrein & Sgeir Liath",
+    xCoord:87243,
+    yCoord:802689,
+    managementArea:"Western Isles",
+    sealSpecies:"Harbour/common and grey seals",
+    comments:"This site protects any species of seal, all year round", 
+    dateFrom:"30-09-2014"
+  ) {
+    success
+    errors
+    site {
+      siteName
+      xCoord
+      yCoord
+    	dateFrom
+    }
+  }
+}
+
+# get a single site using id
+query fetchSite {
+  site(siteId: "1") {
+    success
+    errors
+    site { siteId xCoord yCoord comments dateFrom }
+  }
+}
+
+# get all sites
+query fetchAllSites {
+  sites {
+    success
+    errors
+    sites {
+      siteId
+      siteName
+      xCoord
+      yCoord
+      managementArea
+      comments
+      dateFrom
+    }
+  }
+}
+
+# delete a site using siteId
+mutation {
+  deleteSite(siteId: "1") {
+    success
+    errors
+  }
+}
