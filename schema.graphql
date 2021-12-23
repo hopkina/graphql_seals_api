@@ -1,0 +1,42 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Sighting {
+    id: ID!
+    xCoord: Int!
+    yCoord: Int!
+    description: String!
+    dateSeen: String!
+}
+
+type SightingResult {
+    success: Boolean!
+    errors: [String]
+    sighting: Sighting
+}
+
+type SightingsResult {
+    success: Boolean!
+    errors: [String]
+    sightings: [Sighting]
+}
+
+type Query {
+    sightings: SightingsResult!
+    sighting(sightingId: ID!): SightingResult!
+}
+
+type DeleteSightingResult {
+    success: Boolean!
+    errors: [String]
+}
+
+type Mutation {
+    createSighting(xCoord: Int!, yCoord: Int!, description: String!, dateSeen: String!): SightingResult
+    deleteSighting(sightingId: ID!): DeleteSightingResult
+    updateLocation(sightingId: ID!, newXCoord: Int!, newYCoord: Int!): SightingResult
+    updateDate(sightingId: ID!, newDate: String!): SightingResult
+}
+
