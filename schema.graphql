@@ -4,11 +4,14 @@ schema {
 }
 
 type Site {
-    id: ID!
+    siteId: ID!
+    siteName: String!
     xCoord: Int!
     yCoord: Int!
-    description: String!
-    dateUpdated: String!
+    managementArea: String!
+    sealSpecies: String!
+    comments: String!
+    dateFrom: String!
 }
 
 type SiteResult {
@@ -34,7 +37,15 @@ type DeleteSiteResult {
 }
 
 type Mutation {
-    createSite(xCoord: Int!, yCoord: Int!, description: String!, dateUpdated: String!): SiteResult
+    createSite(
+        siteName: String!
+        xCoord: Int!
+        yCoord: Int!
+        managementArea: String!
+        sealSpecies: String!
+        comments: String!
+        dateFrom: String!
+        ): SiteResult
     deleteSite(siteId: ID!): DeleteSiteResult
     updateLocation(siteId: ID!, newXCoord: Int!, newYCoord: Int!): SiteResult
     updateDate(siteId: ID!, newDate: String!): SiteResult
